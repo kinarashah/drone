@@ -327,7 +327,9 @@ func (b *Builder) run() error {
 
 	// configure if Docker should run in privileged mode
 	host := docker.HostConfig{
-		Privileged: (b.Privileged && b.Repo.IsTrusted()),
+		// Privileged: (b.Privileged && b.Repo.IsTrusted()),
+		// This allows us to run Docker in Docker for pull requests
+		Privileged: b.Privileged,
 	}
 
 	if host.Privileged {
