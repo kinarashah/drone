@@ -425,8 +425,8 @@ func TestRunPrivileged(t *testing.T) {
 	b.Repo.PR = "55"
 	b.run()
 
-	if conf.Privileged != false {
-		t.Errorf("Expected container NOT started in Privileged mode when PR")
+	if conf.Privileged != true {
+		t.Errorf("Expected container IS started in Privileged mode when PR")
 	}
 
 	// now lets set priviliged mode for a pull request from public repo
